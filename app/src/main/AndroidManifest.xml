@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PindahObjectActivity"></activity>
+        <activity android:name=".PindahHasilActivity"></activity>
+        <activity android:name=".PindahObjectActivity" />
         <activity android:name=".PindahDataActivity" />
         <activity android:name=".PindahActivity" />
         <activity android:name=".MainActivity">

@@ -1,13 +1,16 @@
 package com.example.intent_project
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
+    private lateinit var tvResult: TextView
 
     companion object {
         private const val REQUEST_CODE =100
@@ -25,6 +28,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val buttonPindahObject = findViewById<Button>(R.id.btn_pindahobject)
         buttonPindahObject.setOnClickListener(this)
+
+        val buttonDial = findViewById<Button>(R.id.btn_dial)
+        buttonDial.setOnClickListener(this)
+
+        val buttonResult = findViewById<Button>(R.id.btn_pindahhasil)
+        buttonResult.setOnClickListener(this)
+
+        tvResult = findViewById(R.id.tv_result)
     }
 
     override fun onClick(v: View){
@@ -52,6 +63,28 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 val pindahObject = Intent(this@MainActivity, PindahObjectActivity::class.java)
                 pindahObject.putExtra("EXTRA_PERSON", person)
                 startActivity(pindahObject)
+            }
+
+            R.id.btn_dial -> {
+                val phoneNumber = "081847384334"
+                val dialPhoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+                startActivity(dialPhoneIntent)
+            }
+
+            R.id.btn_pindahhasil -> {
+                val intentHasil = Intent(this@MainActivity, PindahHasilActivity::class.java)
+                startActivityForResult(intentHasil, REQUEST_CODE)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE) {
+            if (requestCode == PindahHasilActivity.RESULT_CODE) {
+                val selectedValue = data?.getIntExtra(PindahHasilActivity.EXTRA_SELECTED_VALUE, 0)
+                tvResult.text = "Hasil : $selectedValue"
             }
         }
     }

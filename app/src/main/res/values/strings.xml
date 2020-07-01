@@ -3,4 +3,13 @@
     <string name="pindah_activity">Pindah Activity</string>
     <string name="pindah_data">Pindah Activity dengan Data</string>
     <string name="pindah_object">Pindah Activity dengan Object</string>
+    <string name="dial_number">Dial Number</string>
+    <string name="pilih_angka">Pilih angka yang disukai</string>
+    <string name="_50">50</string>
+    <string name="_100">100</string>
+    <string name="_150">150</string>
+    <string name="_200">200</string>
+    <string name="pilih">Pilih</string>
+    <string name="pindah_hasil">Pindah dengan Hasil</string>
+    <string name="hasil_activity">Hasil  :</string>
 </resources>
